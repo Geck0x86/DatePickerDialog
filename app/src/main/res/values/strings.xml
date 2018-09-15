@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">DatePickerDialog</string>
+    <string name="app_name">DatePickerDialog Demo</string>
+    <string name="lauch_dialog_text">Dialog Simple</string>
+    <string name="input_text_defualt_text">Date</string>
+    <string name="date_string_format">dd/MM/yyyy</string>
 </resources>
