@@ -17,5 +17,12 @@ class MainActivity : AppCompatActivity() {
 
             dialog.show(supportFragmentManager, "DatePickerDialog")
         }
+
+        btnLaunchDialogRange.setOnClickListener {
+
+            val dialog = DatePickerDialog.newInstance(DatePickerDialog.Companion.DialogType.TYPE_RANGE)
+
+            dialog.show(supportFragmentManager, "DatePickerDialog")
+        }
     }
 }
