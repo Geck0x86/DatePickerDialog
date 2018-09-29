@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--declare-styleable name="date_picker_attributes">
-        <attr name="custom_component_title" format="reference" />
-    </declare-styleable-->
+    <declare-styleable name="DatePickerView">
+        <attr name="dp_range" format="boolean" />
+        <attr name="dp_isfrom" format="boolean" />
+    </declare-styleable>
 </resources>

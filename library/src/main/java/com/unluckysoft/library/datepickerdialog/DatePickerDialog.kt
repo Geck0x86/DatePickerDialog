@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.google.android.material.button.MaterialButton
 import com.unluckysoft.library.R
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -47,34 +45,39 @@ class DatePickerDialog : DialogFragment() {
 
         val viewRoot = inflater.inflate(R.layout.date_picker_dialog, container, true)
 
-        val btnFrom = viewRoot.findViewById<MaterialButton>(R.id.btnFrom)
-        val datePickerFrom = viewRoot.findViewById<DatePickerView>(R.id.datePickerView).datePicker
+        // val btnFrom = viewRoot.findViewById<MaterialButton>(R.id.btnFrom)
+        val datePickerFrom = viewRoot.findViewById<DatePickerView>(R.id.datePickerView)
 
         val cal = Calendar.getInstance()
 
         if (dialogType == DialogType.TYPE_SIMPLE) {
 
-            btnFrom?.let {
-                it.visibility = View.GONE
-            }
+            datePickerFrom.range = false
+            datePickerFrom.isFrom = false
+            /*   btnFrom?.let {
+                   it.visibility = View.GONE
+               }*/
         } else {
 
-            btnFrom?.let {
+            datePickerFrom.range = true
+            datePickerFrom.isFrom = true
+
+            /*btnFrom?.let {
                 val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(cal.time)
 
                 it.text = "From: $date"
-            }
+            }*/
         }
 
-        datePickerFrom?.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
+        datePickerFrom.datePicker?.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
         { datePicker, year, month, dayOfMonth ->
 
-            btnFrom?.let {
+            /*btnFrom?.let {
                 cal.set(year, month, dayOfMonth)
                 val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(cal.time)
 
                 it.text = "From: $date"
-            }
+            }*/
         }
 
         return viewRoot
