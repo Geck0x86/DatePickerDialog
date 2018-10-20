@@ -24,18 +24,12 @@ class DatePickerView : LinearLayout {
 
     var swActive: Switch?
 
-    var range: Boolean
-        get() {
-            return range
-        }
+    var range: Boolean = false
         set(value) {
             setRangeMode(value)
         }
 
-    var isFrom: Boolean
-        get() {
-            return isFrom
-        }
+    var isFrom: Boolean = true
         set(value) {
             setIsFrom(value)
         }
@@ -70,15 +64,15 @@ class DatePickerView : LinearLayout {
 
             isFrom = typedArray.getBoolean(R.styleable.DatePickerView_dp_isfrom, false)
 
-            if (!isFrom) {
+            /*if (!isFrom) {
                 setIsFrom(isFrom)
-            }
+            }*/
 
             range = typedArray.getBoolean(R.styleable.DatePickerView_dp_range, false)
 
-            if (!range) {
+            /*if (!range) {
                 setRangeMode(range)
-            }
+            }*/
 
             typedArray.recycle()
         }
