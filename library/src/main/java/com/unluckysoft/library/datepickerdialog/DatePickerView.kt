@@ -14,6 +14,26 @@ import java.util.*
 
 class DatePickerView : LinearLayout {
 
+    interface OnBtnAcceptClickListener {
+        fun onClick(view: View)
+    }
+
+    interface OnBtnCancelClickListener {
+        fun onClick(view: View)
+    }
+
+    private var onBtnAcceptClickListener: OnBtnAcceptClickListener? = null
+
+    fun setOnBtnAcceptClickListener(onBtnAcceptClickListener: OnBtnAcceptClickListener) {
+        this.onBtnAcceptClickListener = onBtnAcceptClickListener
+    }
+
+    private var onBtnCancelClickListener: OnBtnCancelClickListener? = null
+
+    fun setOnBtnCancelClickListener(onBtnCancelClickListener: OnBtnCancelClickListener) {
+        this.onBtnCancelClickListener = onBtnCancelClickListener
+    }
+
     var attrs: AttributeSet? = null
 
     var viewRoot: View
@@ -23,6 +43,10 @@ class DatePickerView : LinearLayout {
     var btnToggle: MaterialButton?
 
     var swActive: Switch?
+
+    var btnAccept: MaterialButton
+
+    var btnCancel: MaterialButton
 
     var range: Boolean = false
         set(value) {
@@ -56,6 +80,8 @@ class DatePickerView : LinearLayout {
         datePicker = viewRoot.findViewById(R.id.datePicker)
         btnToggle = viewRoot.findViewById(R.id.btnToggle)
         swActive = viewRoot.findViewById(R.id.swActive)
+        btnAccept = viewRoot.findViewById(R.id.btnAccept)
+        btnCancel = viewRoot.findViewById(R.id.btnCancel)
 
         attrs?.let {
 
@@ -77,7 +103,21 @@ class DatePickerView : LinearLayout {
             typedArray.recycle()
         }
 
+        datePicker?.run {
 
+
+        }
+
+        onBtnAcceptClickListener?.let {
+
+            datePicker?.run {
+                val day = this.dayOfMonth
+                val month = this.month
+                val year = this.year
+
+
+            }
+        }
     }
 
     private fun setRangeMode(range: Boolean) {

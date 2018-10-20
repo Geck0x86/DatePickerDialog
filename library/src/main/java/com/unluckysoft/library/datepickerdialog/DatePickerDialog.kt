@@ -13,20 +13,18 @@ class DatePickerDialog : DialogFragment() {
 
     companion object {
 
-        enum class DialogType(val type: Int) {
-            TYPE_SIMPLE(1),
-            TYPE_RANGE(0)
-        }
+        const val TYPE_SIMPLE = 0
+        const val TYPE_RANGE = 1
 
         fun newInstance(): DatePickerDialog {
             val fragment = DatePickerDialog()
 
-            fragment.dialogType = DialogType.TYPE_SIMPLE
+            fragment.dialogType = TYPE_SIMPLE
 
             return fragment
         }
 
-        fun newInstance(dialogType: DialogType): DatePickerDialog {
+        fun newInstance(dialogType: Int): DatePickerDialog {
             val fragment = DatePickerDialog()
 
             fragment.dialogType = dialogType
@@ -35,7 +33,7 @@ class DatePickerDialog : DialogFragment() {
         }
     }
 
-    lateinit var dialogType: DialogType
+    var dialogType: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +48,7 @@ class DatePickerDialog : DialogFragment() {
 
         val cal = Calendar.getInstance()
 
-        if (dialogType == DialogType.TYPE_SIMPLE) {
+        if (dialogType == TYPE_SIMPLE) {
 
             datePickerFrom.range = false
             datePickerFrom.isFrom = false
